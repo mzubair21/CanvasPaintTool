@@ -3,12 +3,12 @@ import React, { useEffect, useRef, useState } from "react"
 import IconLayersMenu from "../../../assets/Icons/IconLayersMenu"
 
 interface ICoulumnFilterProps {
-  menu: React.ReactNode
+  Menu: React.ComponentType<{ handleClose: () => void }>
   title: string
   icon: React.ReactNode
 }
 
-function ToolMenuWithDropdown({ menu, title, icon }: ICoulumnFilterProps) {
+function ToolMenuWithDropdown({ Menu, title, icon }: ICoulumnFilterProps) {
   const [isFilterMenuOpen, setFilterMenuOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -48,10 +48,14 @@ function ToolMenuWithDropdown({ menu, title, icon }: ICoulumnFilterProps) {
           isFilterMenuOpen
             ? "translate-y-2 opacity-100 z-10"
             : "-translate-y-2 opacity-0 z-[-1]"
-        } transition-all delay-75 absolute left-0 w-full origin-top-right rounded-md bg-dark-light pt-1 shadow-lg focus:outline-none`}
+        } transition-all delay-75 absolute left-0 w-max origin-top-right rounded-md bg-dark-light-dark pt-1 shadow-lg focus:outline-none`}
         role="menu"
       >
-        {menu}
+        <Menu
+          handleClose={() => {
+            setFilterMenuOpen(false)
+          }}
+        />
       </div>
     </div>
   )

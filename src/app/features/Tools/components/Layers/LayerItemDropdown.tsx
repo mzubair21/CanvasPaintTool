@@ -37,7 +37,7 @@ function LayerItemDropdown({
         className={`${active ? "active" : ""}  group w-full`}
       >
         <div
-          className="items-center flex gap-2"
+          className="items-center flex gap-2 px-1"
           onClick={() => setActive(!active)}
         >
           <div className={!active ? " -rotate-90" : ""}>

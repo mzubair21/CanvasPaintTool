@@ -2,3 +2,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mantine-Switch-thumb {
+  @apply !bg-dark-light-dark !border-dark-light !w-4 !h-4;
+}
+
+input:checked + .mantine-1ey7u5d {
+  @apply bg-secondary border-secondary;
+}
+
+input + .mantine-1ey7u5d {
+  @apply bg-dark-light border-dark-light;
+}
