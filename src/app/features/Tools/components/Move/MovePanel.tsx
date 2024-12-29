@@ -3,7 +3,7 @@ import IconArrow from "../../../../assets/Icons/IconArrow"
 import { Checkbox, Switch } from "@mantine/core"
 import IconRestore from "../../../../assets/Icons/IconRestore"
 import IconTag from "../../../../assets/Icons/IconTag"
-const hutImg = "/src/app/features/Tools/components/assets/hut.png"
+import hutImg from "../assets/hut.png"
 
 function MovePanel({ handleClose }: { handleClose: () => void }) {
   const roofs = [

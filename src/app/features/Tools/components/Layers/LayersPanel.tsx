@@ -6,8 +6,8 @@ import LayerItem from "./LayerItem"
 import PerfectScrollbar from "react-perfect-scrollbar"
 import LayerItemDropdown from "./LayerItemDropdown"
 
-const bushImg = "/src/app/features/Tools/components/assets/bush.png"
-const mountainImg = "/src/app/features/Tools/components/assets/mountain.png"
+import bushImg from "../assets/bush.png"
+import mountainImg from "../assets/mountain.png"
 
 const LayersPanel = ({ handleClose }: { handleClose: () => void }) => {
   const layers: {
