@@ -1,9 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
+import toolsSlice from "../slices/toolSlice"
 
 export const getState = () => store.getState()
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({
+  tools: toolsSlice,
+})
 
 const store = configureStore({
   // Add the API reducer to the store

@@ -7,7 +7,21 @@ module.exports = {
       center: true,
     },
     extend: {
-      colors: {},
+      colors: {
+        secondary: {
+          DEFAULT: "#E1520B",
+        },
+        dark: {
+          DEFAULT: "#1A1B1E",
+          light: {
+            DEFAULT: "#45474F",
+            dark: {
+              DEFAULT: "#242528",
+            },
+          },
+        },
+        gray: "#B5B5B5",
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },

@@ -1,0 +1,60 @@
+import { Checkbox } from "@mantine/core"
+import React, { useEffect, useRef, useState } from "react"
+import IconLayersMenu from "../../../assets/Icons/IconLayersMenu"
+
+interface ICoulumnFilterProps {
+  menu: React.ReactNode
+  title: string
+  icon: React.ReactNode
+}
+
+function ToolMenuWithDropdown({ menu, title, icon }: ICoulumnFilterProps) {
+  const [isFilterMenuOpen, setFilterMenuOpen] = useState<boolean>(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  const toggleFilterMenu = () => setFilterMenuOpen(!isFilterMenuOpen)
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setFilterMenuOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        className={` ${
+          isFilterMenuOpen ? " border-secondary border-[1px] " : "border-none"
+        }  rounded-md flex items-center justify-between border p-2 gap-3`}
+        id={`${ToolMenuWithDropdown}-${Math.random()}-menu-button`}
+        aria-expanded={isFilterMenuOpen}
+        aria-haspopup="true"
+        onClick={toggleFilterMenu}
+      >
+        {icon}
+      </button>
+      <div
+        className={`${
+          isFilterMenuOpen
+            ? "translate-y-2 opacity-100 z-10"
+            : "-translate-y-2 opacity-0 z-[-1]"
+        } transition-all delay-75 absolute left-0 w-full origin-top-right rounded-md bg-dark-light pt-1 shadow-lg focus:outline-none`}
+        role="menu"
+      >
+        {menu}
+      </div>
+    </div>
+  )
+}
+
+export default ToolMenuWithDropdown
