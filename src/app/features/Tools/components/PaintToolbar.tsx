@@ -19,7 +19,7 @@ const PaintToolbar = () => {
     dispatch(setTool(menu))
   }
   return (
-    <div className="flex flex-row gap-4 p-4 ">
+    <div className="flex flex-wrap flex-row gap-4 p-4 ">
       <button className="focus:outline-none text-secondary">
         <IconBurgerMenu className="focus:outline-none text-secondary" />
       </button>
