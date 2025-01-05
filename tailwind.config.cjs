@@ -11,6 +11,10 @@ module.exports = {
         secondary: {
           DEFAULT: "#E1520B",
         },
+        danger: {
+          DEFAULT: "#FF0000",
+        },
+
         dark: {
           DEFAULT: "#1A1B1E",
           light: {
