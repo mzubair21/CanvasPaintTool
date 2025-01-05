@@ -14,3 +14,7 @@ input:checked + .mantine-1ey7u5d {
 input + .mantine-1ey7u5d {
   @apply bg-dark-light border-dark-light;
 }
+
+.mantine-ColorPicker-wrapper {
+  @apply flex flex-col gap-1;
+}

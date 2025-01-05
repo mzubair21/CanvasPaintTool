@@ -1,5 +1,6 @@
 import { Checkbox, ColorPicker, Stack, Text } from "@mantine/core"
 import React, { useEffect, useRef, useState } from "react"
+import IconArrow from "../../assets/Icons/IconArrow"
 
 function ColorPickerDropdown({
   color,
@@ -59,10 +60,27 @@ function ColorPickerDropdown({
         } transition-all delay-75 absolute left-0 w-max origin-top-right rounded-md bg-dark-light-dark pt-1 shadow-lg focus:outline-none`}
         role="menu"
       >
-        <div className="p-2">
-          <Stack align="center">
-            <ColorPicker format="rgba" value={color} onChange={setColor} />
-            <Text>{color}</Text>
+        <div className="p-2 pt-2">
+          <div className="flex p- pt-0 px-3 items-center border-b pb-2 border-dark-light">
+            <button
+              onClick={() => {
+                setPickerMenuOpen(false)
+              }}
+              className="text-xs"
+            >
+              <IconArrow />
+            </button>
+            <h3 className="text-secondary w-full font-sm text-center font-semibold">
+              Color
+            </h3>
+          </div>
+          <Stack align="center" className="pt-3">
+            <ColorPicker format="hex" value={color} onChange={setColor} />
+            <input
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              className="w-full -mt-2 p-2 text-gray/60 bg-dark rounded-md"
+            />
           </Stack>
         </div>
       </div>
