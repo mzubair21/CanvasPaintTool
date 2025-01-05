@@ -12,7 +12,7 @@ import brush4Img from "../../assets/brush4.png"
 import paintAxis from "../../assets/paintAxis.png"
 import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 
-function PaintPanel({ handleClose }: { handleClose: () => void }) {
+function ErasePanel({ handleClose }: { handleClose: () => void }) {
   const [scale, setScale] = React.useState(0)
   const [brightness, setBrightness] = React.useState(0)
   const [brushSize, setBrushSize] = React.useState(0)
@@ -30,93 +30,10 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
           <IconArrow />
         </button>
         <h3 className="text-secondary w-full font-sm text-center font-semibold">
-          Paint Tool
+          Erase Tool
         </h3>
       </div>
-      <div className="border-dark-light border-b pb-2">
-        <div className="flex flex-col">
-          <button className="bg-dark-light text-white rounded-lg p-2">
-            Library
-          </button>
-        </div>
-      </div>
-      <div className="p-0  overflow-hidden relative gap-2 rounded-lg bg-dark flex items-center justify-center">
-        <button className="absolute top-0 left-0 m-2">
-          <IconRestore />
-        </button>
-        <button className="absolute top-0 right-0 m-2">
-          <IconTag />
-        </button>
-        <div className="required:">
-          <img
-            className="w-full h-full object-scale-down"
-            src={paintToolImg}
-            alt="Move Tool"
-          />
-          <img
-            className=" absolute w-[80%] h-[80%] object-scale-down top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 "
-            src={paintAxis}
-            alt="Move Tool"
-          />
-        </div>
-      </div>
 
-      <div className="border-dark-light border-b">
-        <div className="flex flex-col gap-2 pb-4 border-dark-light border-b">
-          {/* Scale */}
-          <div className="grid grid-cols-12 gap-2">
-            <h4 className="text-sm text-end col-span-5">Scale</h4>
-            <InputProgress
-              className="col-span-7"
-              range={scale}
-              setRange={setScale}
-              increment={() => setScale(scale + 1)}
-              decrement={() => setScale(scale - 1)}
-            />
-          </div>
-          {/* Brightness*/}
-          <div className="grid grid-cols-12 gap-2">
-            <h4 className="text-sm text-end col-span-5">Brightness</h4>
-            <InputProgress
-              className="col-span-7"
-              range={brightness}
-              setRange={setBrightness}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="p-2 gap-2  grid grid-cols-12">
-            <h4 className=" text-sm col-span-5">Stroke</h4>
-            <div className="col-span-7 flex gap-2">
-              <Switch
-                color="orange"
-                className=""
-                checked={isStroke}
-                onChange={() => setIsStroke(!isStroke)}
-              />
-              <ColorPickerDropdown
-                color={strokeColor}
-                setColor={setStrokeColor}
-              />
-            </div>
-          </div>
-          <div className="p-2 gap-2  grid grid-cols-12">
-            <h4 className=" text-sm col-span-5">Shadow</h4>
-            <div className="col-span-7 flex gap-2">
-              <Switch
-                color="orange"
-                className=""
-                checked={isShadow}
-                onChange={() => setIsShadow(!isShadow)}
-              />
-              <ColorPickerDropdown
-                color={shadowColor}
-                setColor={setShadowColor}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="flex flex-col gap-2 pb-4 border-dark-light border-b">
         <div className="grid grid-cols-12 gap-2">
           <h4 className="text-sm text-end col-span-5">Brush Size</h4>
@@ -171,13 +88,8 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2 pb-4">
-        <button className="bg-dark-light text-white/60 tracking-wider rounded-lg p-2 font-light">
-          New Paint Layer
-        </button>
-      </div>
     </div>
   )
 }
 
-export default PaintPanel
+export default ErasePanel
