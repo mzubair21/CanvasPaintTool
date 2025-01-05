@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux"
 import { setTool } from "../../../slices/toolSlice"
 import ToolMenuWithDropdown from "./ToolMenuWithDropdown"
 import MovePanel from "./Move/MovePanel"
+import PaintPanel from "./Paint/PaintPanel"
 
 const PaintToolbar = () => {
   const dispatch = useDispatch()
@@ -24,9 +25,11 @@ const PaintToolbar = () => {
         <IconBurgerMenu className="focus:outline-none text-secondary" />
       </button>
       <ToolMenuWithDropdown Menu={MovePanel} title="" icon={<IconMoveMenu />} />
-      <button className="focus:outline-none text-secondary">
-        <IconPaintMenu className="focus:outline-none text-secondary" />
-      </button>
+      <ToolMenuWithDropdown
+        Menu={PaintPanel}
+        title=""
+        icon={<IconPaintMenu />}
+      />
       <button className="focus:outline-none text-secondary">
         <IconEraseMenu className="focus:outline-none text-secondary" />
       </button>

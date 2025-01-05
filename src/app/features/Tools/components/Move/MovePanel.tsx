@@ -3,7 +3,8 @@ import IconArrow from "../../../../assets/Icons/IconArrow"
 import { Checkbox, Switch } from "@mantine/core"
 import IconRestore from "../../../../assets/Icons/IconRestore"
 import IconTag from "../../../../assets/Icons/IconTag"
-import hutImg from "../assets/hut.png"
+import hutImg from "../../assets/hut.png"
+import InputProgress from "../../../../shared/components/InputProgress"
 
 function MovePanel({ handleClose }: { handleClose: () => void }) {
   const roofs = [
@@ -242,51 +243,13 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
 
         <div className="grid grid-cols-2 gap-2">
           <h4 className="text-sm text-end">Scale</h4>
-          <div
-            className="relative w-full flex items-center justify-center bg-dark rounded-lg p-[0.2px]"
-            onClick={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect()
-              const clickX = e.clientX - rect.left
-              const newScale =
-                Math.round((clickX / rect.width) * 100) == 99
-                  ? 100
-                  : Math.round((clickX / rect.width) * 100)
-              setScale(newScale)
-            }}
-          >
-            <div
-              className="absolute bg-dark-light h-full left-0 rounded-md"
-              style={{ width: `${scale}%` }}
-            ></div>
-            <h4 className="text-sm text-center absolute pointer-events-none">
-              {scale}
-            </h4>
-          </div>
+          <InputProgress range={scale} setRange={setScale} />
         </div>
 
         {/* Brightness*/}
         <div className="grid grid-cols-2 gap-2">
           <h4 className="text-sm text-end">Brightness</h4>
-          <div
-            className="relative w-full flex items-center justify-center bg-dark rounded-lg p-[0.2px]"
-            onClick={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect()
-              const clickX = e.clientX - rect.left
-              const newBrightness =
-                Math.round((clickX / rect.width) * 100) == 99
-                  ? 100
-                  : Math.round((clickX / rect.width) * 100)
-              setBrightness(newBrightness)
-            }}
-          >
-            <div
-              className="absolute bg-dark-light h-full left-0 rounded-md"
-              style={{ width: `${brightness}%` }}
-            ></div>
-            <h4 className="text-sm text-center absolute pointer-events-none">
-              {brightness}
-            </h4>
-          </div>
+          <InputProgress range={brightness} setRange={setBrightness} />
         </div>
       </div>
     </div>
