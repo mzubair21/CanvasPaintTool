@@ -1,12 +1,14 @@
 import React from "react"
 import IconArrow from "../../../../assets/Icons/IconArrow"
-import { Checkbox, Switch } from "@mantine/core"
+import { Switch } from "@mantine/core"
 import IconRestore from "../../../../assets/Icons/IconRestore"
 import IconTag from "../../../../assets/Icons/IconTag"
 import hutImg from "../../assets/hut.png"
 import InputProgress from "../../../../shared/components/InputProgress"
+import ObjectsSlider from "./ObjectsSlider"
+import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 
-function MovePanel({ handleClose }: { handleClose: () => void }) {
+function ObjectPanel({ handleClose }: { handleClose: () => void }) {
   const roofs = [
     {
       id: 1,
@@ -60,6 +62,8 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
     },
   ]
 
+  const [random, setRandom] = React.useState(true)
+
   const [selectedRoof, setSelectedRoof] = React.useState(roofs[0])
   const [selectedFacade, setSelectedFacade] = React.useState(facades[0])
   const [selectedHut, setSelectedHut] = React.useState(
@@ -72,32 +76,38 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
   const [scale, setScale] = React.useState(1)
   const [brightness, setBrightness] = React.useState(1)
 
-  // React.useEffect(() => {
-  //   const hut = huts.find(
-  //     (hut) =>
-  //       hut.roof === selectedRoof.name && hut.facade === selectedFacade.name
-  //   )
-  //   if (hut) {
-  //     setSelectedHut(hut)
-  //   }
-  // }, [selectedRoof, selectedFacade])
+  const [scareCrowColor, setScareCrowColor] = React.useState("#000000")
+  const [smokeColor, setSmokeColor] = React.useState("#000000")
 
-  // React.useEffect(() => {
-  //   if (selectedHut.roof !== selectedRoof.name) {
-  //     const newRoof = roofs.find((roof) => roof.name === selectedHut.roof)
-  //     if (newRoof) {
-  //       setSelectedRoof(newRoof)
-  //     }
-  //   }
-  //   if (selectedHut.facade !== selectedFacade.name) {
-  //     const newFacade = facades.find(
-  //       (facade) => facade.name === selectedHut.facade
+  const [roofColor, setRoofColor] = React.useState("#000000")
+  const [facadeColor, setFacadeColor] = React.useState("#000000")
+
+  //   React.useEffect(() => {
+  //     const hut = huts.find(
+  //       (hut) =>
+  //         hut.roof === selectedRoof.name && hut.facade === selectedFacade.name
   //     )
-  //     if (newFacade) {
-  //       setSelectedFacade(newFacade)
+  //     if (hut) {
+  //       setSelectedHut(hut)
   //     }
-  //   }
-  // }, [selectedHut])
+  //   }, [selectedRoof, selectedFacade])
+
+  //   React.useEffect(() => {
+  //     if (selectedHut.roof !== selectedRoof.name) {
+  //       const newRoof = roofs.find((roof) => roof.name === selectedHut.roof)
+  //       if (newRoof) {
+  //         setSelectedRoof(newRoof)
+  //       }
+  //     }
+  //     if (selectedHut.facade !== selectedFacade.name) {
+  //       const newFacade = facades.find(
+  //         (facade) => facade.name === selectedHut.facade
+  //       )
+  //       if (newFacade) {
+  //         setSelectedFacade(newFacade)
+  //       }
+  //     }
+  //   }, [selectedHut])
 
   return (
     <div className="w-64 text-gray px-3 flex flex-col gap-2">
@@ -106,17 +116,44 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
           <IconArrow />
         </button>
         <h3 className="text-secondary w-full font-sm text-center font-semibold">
-          Move Tool
+          Object Tool
         </h3>
       </div>
-      <div className="border-dark-light border-b">
-        <div className="p-2 flex gap-2">
-          <h4 className=" text-sm">Objects/Texts</h4>
-          <Switch color="orange" className="" />
+      <div className="border-dark-light border-b pb-2">
+        <div className="flex flex-col">
+          <button className="bg-dark-light text-white rounded-lg p-2">
+            Library
+          </button>
         </div>
-        <div className="p-2 flex gap-2 ml-8">
-          <h4 className=" text-sm">Textures</h4>
-          <Switch color="orange" className="" />
+      </div>
+      <div className="border-dark-light border-b pb-2">
+        <div className="relative px-3">
+          <ObjectsSlider />
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+            }}
+            className="absolute top-[50%] -translate-y-[50%] left-0 z-10"
+          >
+            <IconArrow className="swiper-object-prev" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+            }}
+            className="absolute top-[50%] -translate-y-[50%] z-10 right-0"
+          >
+            <IconArrow className="swiper-object-next" />
+          </button>
+          <div className="grid grid-cols-12 gap-2 pt-2">
+            <h4 className=" text-sm col-span-6 text-end">Random</h4>
+            <Switch
+              color="orange"
+              className="col-span-6"
+              checked={random}
+              onChange={() => setRandom(!random)}
+            />
+          </div>
         </div>
       </div>
       <div className="p-2 relative gap-2 rounded-lg bg-dark flex items-center justify-center">
@@ -184,9 +221,15 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
             >
               <IconArrow className="" />
             </button>
+
             <h4 className="text-sm text-center truncate">
               {selectedRoof.name}
             </h4>
+            <ColorPickerDropdown
+              className="!absolute top-0 mr-5 right-0"
+              color={roofColor}
+              setColor={setRoofColor}
+            />
           </div>
         </div>
         {/* Facades */}
@@ -220,18 +263,35 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
             <h4 className="text-sm text-center truncate">
               {selectedFacade.name}
             </h4>
+            <ColorPickerDropdown
+              className="!absolute top-0 mr-5 right-0"
+              color={facadeColor}
+              setColor={setFacadeColor}
+            />
           </div>
         </div>
         <div className="flex flex-col justify-center items-center gap-2 py-2">
           {/* Scarecrow */}
           <div className="grid grid-cols-2 gap-2">
-            <h4 className=" text-sm">Scarecrow</h4>
-            <Switch color="orange" className="" />
+            <h4 className=" text-sm text-end">Scarecrow</h4>
+            <div className="flex gap-2">
+              <Switch color="orange" className="" />
+              <ColorPickerDropdown
+                color={scareCrowColor}
+                setColor={setScareCrowColor}
+              />
+            </div>
           </div>
           {/* Smoke */}
           <div className="grid grid-cols-2 gap-2">
-            <h4 className=" text-sm">Smoke</h4>
-            <Switch color="orange" className="" />
+            <h4 className=" text-sm text-end">Smoke</h4>
+            <div className="flex gap-2">
+              <Switch color="orange" className="" />
+              <ColorPickerDropdown
+                color={smokeColor}
+                setColor={setSmokeColor}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -256,4 +316,4 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
   )
 }
 
-export default MovePanel
+export default ObjectPanel

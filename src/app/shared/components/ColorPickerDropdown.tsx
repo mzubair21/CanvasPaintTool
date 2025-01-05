@@ -4,9 +4,11 @@ import React, { useEffect, useRef, useState } from "react"
 function ColorPickerDropdown({
   color,
   setColor,
+  className,
 }: {
   color: string
   setColor: (color: string) => void
+  className?: string
 }) {
   const [isFilterMenuOpen, setPickerMenuOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -30,7 +32,7 @@ function ColorPickerDropdown({
   }, [])
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className={`relative ${className} `} ref={dropdownRef}>
       <button
         className={` ${
           isFilterMenuOpen ? " border-secondary border-[1px] " : "border-none"

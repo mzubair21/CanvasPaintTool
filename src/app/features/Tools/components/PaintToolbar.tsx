@@ -14,6 +14,7 @@ import ToolMenuWithDropdown from "./ToolMenuWithDropdown"
 import MovePanel from "./Move/MovePanel"
 import PaintPanel from "./Paint/PaintPanel"
 import ErasePanel from "./Erase/ErasePanel"
+import ObjectPanel from "./Object/ObjectPanel"
 
 const PaintToolbar = () => {
   const dispatch = useDispatch()
@@ -36,10 +37,12 @@ const PaintToolbar = () => {
         title=""
         icon={<IconEraseMenu />}
       />
+      <ToolMenuWithDropdown
+        Menu={ObjectPanel}
+        title=""
+        icon={<IconCastleMenu />}
+      />
 
-      <button className="focus:outline-none text-secondary">
-        <IconCastleMenu className="focus:outline-none text-secondary" />
-      </button>
       <button className="focus:outline-none text-secondary">
         <IconTextMenu className="focus:outline-none text-secondary" />
       </button>

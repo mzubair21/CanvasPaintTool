@@ -1,27 +1,14 @@
 import React from "react"
 import IconArrow from "../../../../assets/Icons/IconArrow"
-import { Switch } from "@mantine/core"
-import IconRestore from "../../../../assets/Icons/IconRestore"
-import IconTag from "../../../../assets/Icons/IconTag"
-import paintToolImg from "../../assets/paintTool.png"
 import InputProgress from "../../../../shared/components/InputProgress"
 import brush1Img from "../../assets/brush1.png"
 import brush2Img from "../../assets/brush2.png"
 import brush3Img from "../../assets/brush3.png"
 import brush4Img from "../../assets/brush4.png"
-import paintAxis from "../../assets/paintAxis.png"
-import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 
 function ErasePanel({ handleClose }: { handleClose: () => void }) {
-  const [scale, setScale] = React.useState(0)
-  const [brightness, setBrightness] = React.useState(0)
   const [brushSize, setBrushSize] = React.useState(0)
   const [opacity, setopacity] = React.useState(0)
-
-  const [isStroke, setIsStroke] = React.useState(false)
-  const [strokeColor, setStrokeColor] = React.useState("#000000")
-  const [isShadow, setIsShadow] = React.useState(false)
-  const [shadowColor, setShadowColor] = React.useState("#000000")
 
   return (
     <div className="w-64 text-gray px-3 flex flex-col gap-2">
