@@ -15,6 +15,8 @@ import MovePanel from "./Move/MovePanel"
 import PaintPanel from "./Paint/PaintPanel"
 import ErasePanel from "./Erase/ErasePanel"
 import ObjectPanel from "./Object/ObjectPanel"
+import TextPanel from "./Text/TextPanel"
+import SettingsPanel from "./Settings/SettingsPanel"
 
 const PaintToolbar = () => {
   const dispatch = useDispatch()
@@ -23,9 +25,12 @@ const PaintToolbar = () => {
   }
   return (
     <div className="flex flex-wrap flex-row gap-4 p-4 ">
-      <button className="focus:outline-none text-secondary">
-        <IconBurgerMenu className="focus:outline-none text-secondary" />
-      </button>
+      <ToolMenuWithDropdown
+        Menu={SettingsPanel}
+        title=""
+        icon={<IconBurgerMenu />}
+      />
+
       <ToolMenuWithDropdown Menu={MovePanel} title="" icon={<IconMoveMenu />} />
       <ToolMenuWithDropdown
         Menu={PaintPanel}
@@ -42,10 +47,7 @@ const PaintToolbar = () => {
         title=""
         icon={<IconCastleMenu />}
       />
-
-      <button className="focus:outline-none text-secondary">
-        <IconTextMenu className="focus:outline-none text-secondary" />
-      </button>
+      <ToolMenuWithDropdown Menu={TextPanel} title="" icon={<IconTextMenu />} />
       <div className="flex flex-row gap-4 ml-4">
         <button className="focus:outline-none text-secondary">
           <IconBackMenu className="focus:outline-none text-secondary" />

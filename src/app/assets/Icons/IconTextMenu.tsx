@@ -1,6 +1,6 @@
 import React from "react"
 
-function IconTextMenu({ className }: { className: string }) {
+function IconTextMenu({ className }: { className?: string }) {
   return (
     <svg
       className={className}
