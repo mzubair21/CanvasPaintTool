@@ -3,6 +3,7 @@ import IconArrow from "../../../../assets/Icons/IconArrow"
 import ErasePanel from "../Erase/ErasePanel"
 import ImageSizePanel from "./ImageSizePanel"
 import ExportPanel from "./ExportPanel"
+import NewScenePanel from "./NewScenePanel"
 
 function SettingsPanel({ handleClose }: { handleClose: () => void }) {
   const [menuVisible, setMenuVisible] = React.useState(false)
@@ -49,6 +50,8 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
     switch (selectedSetting) {
       case "ImageSize":
         return <ImageSizePanel handleClose={() => setMenuVisible(false)} />
+      case "Save":
+        return <NewScenePanel handleClose={() => setMenuVisible(false)} />
       case "Export":
         return <ExportPanel handleClose={() => setMenuVisible(false)} />
       default:
@@ -73,7 +76,12 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
         </div>
 
         <div className="flex flex-col gap-2 pb-4">
-          <button className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
+          <button
+            onClick={(e) => {
+              handleSettingItemClick(e, "Save")
+            }}
+            className=" bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
+          >
             Save
           </button>
           <button
@@ -92,7 +100,10 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
           >
             Image Size
           </button>
-          <button className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
+          <button
+            disabled
+            className="disabled:pointer-events-none disabled:opacity-50 bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
+          >
             Share
           </button>
           <button className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
