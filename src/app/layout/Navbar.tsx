@@ -1,9 +1,7 @@
 import React from "react"
 import PaintToolbar from "../features/Tools/components/PaintToolbar"
-import { Button } from "@mantine/core"
 import { useSelector } from "react-redux"
 import { IRootState } from "../store"
-import IconLayersMenu from "../assets/Icons/IconLayersMenu"
 import LayersToolbar from "../features/Tools/components/Layers/LayersToolbar"
 
 function Navbar() {
