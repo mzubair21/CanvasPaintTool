@@ -55,9 +55,9 @@ function ColorPickerDropdown({
       <div
         className={`${
           isFilterMenuOpen
-            ? "translate-y-2 opacity-100 z-10"
-            : "-translate-y-2 opacity-0 z-[-1]"
-        } transition-all delay-75 absolute left-0 w-max origin-top-right rounded-md bg-dark-light-dark pt-1 shadow-lg focus:outline-none`}
+            ? "translate-y-2 opacity-100 z-50"
+            : "-translate-y-2 opacity-0  hidden z-50"
+        } border border-gray/60 transition-all delay-75 absolute left-0 w-max origin-top-right rounded-md bg-dark-light-dark pt-1 shadow-lg focus:outline-none`}
         role="menu"
       >
         <div className="p-2 pt-2">

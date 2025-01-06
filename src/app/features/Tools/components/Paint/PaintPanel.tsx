@@ -49,7 +49,7 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
         </button>
         <div className="required:">
           <img
-            className="w-full h-full object-scale-down"
+            className="w-full h-32 object-cover aspect-video"
             src={paintToolImg}
             alt="Move Tool"
           />
