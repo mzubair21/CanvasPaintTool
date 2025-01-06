@@ -1,16 +1,7 @@
 import React, { useMemo } from "react"
 import IconArrow from "../../../../assets/Icons/IconArrow"
-import InputProgress from "../../../../shared/components/InputProgress"
-import brush1Img from "../../assets/brush1.png"
-import brush2Img from "../../assets/brush2.png"
-import brush3Img from "../../assets/brush3.png"
-import brush4Img from "../../assets/brush4.png"
-import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 
 function ImageSizePanel({ handleClose }: { handleClose: () => void }) {
-  const [brushSize, setBrushSize] = React.useState(0)
-  const [opacity, setopacity] = React.useState(0)
-
   const resolutions = useMemo(
     () => [
       {

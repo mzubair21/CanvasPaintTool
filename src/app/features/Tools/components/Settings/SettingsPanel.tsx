@@ -1,15 +1,31 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import IconArrow from "../../../../assets/Icons/IconArrow"
 import ErasePanel from "../Erase/ErasePanel"
 import ImageSizePanel from "./ImageSizePanel"
+import ExportPanel from "./ExportPanel"
 
 function SettingsPanel({ handleClose }: { handleClose: () => void }) {
   const [menuVisible, setMenuVisible] = React.useState(false)
   const [menuPosition, setMenuPosition] = React.useState({ top: 0, left: 0 })
-  const handleSettingItemClick = (event: React.MouseEvent) => {
-    if (menuVisible) return setMenuVisible(false)
+  const [selectedSetting, setSelectedSetting] = useState<string>()
+  const handleSettingItemClick = (
+    event: React.MouseEvent,
+    menuType: string
+  ) => {
+    setSelectedSetting(menuType)
+    if (menuVisible && selectedSetting == menuType) return setMenuVisible(false)
     const rect = (event.target as HTMLElement).getBoundingClientRect()
-    setMenuPosition({ top: rect.top, left: rect.left + rect.width })
+    setMenuPosition({
+      top: menuType == "Export" ? 68 : rect.top,
+      left:
+        menuType == "Export"
+          ? window.innerWidth < 1024
+            ? -15
+            : rect.left + rect.width
+          : window.innerWidth < 768
+          ? 80
+          : rect.left + rect.width,
+    })
     setMenuVisible(true)
   }
 
@@ -28,6 +44,18 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
     document.addEventListener("click", handleClick)
     return () => document.removeEventListener("click", handleClick)
   }, [menuVisible])
+
+  const renderPanel = () => {
+    switch (selectedSetting) {
+      case "ImageSize":
+        return <ImageSizePanel handleClose={() => setMenuVisible(false)} />
+      case "Export":
+        return <ExportPanel handleClose={() => setMenuVisible(false)} />
+      default:
+        return
+    }
+  }
+
   return (
     <>
       <div
@@ -48,11 +76,18 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
           <button className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
             Save
           </button>
-          <button className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
+          <button
+            onClick={(e) => {
+              handleSettingItemClick(e, "Export")
+            }}
+            className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
+          >
             Export
           </button>
           <button
-            onClick={handleSettingItemClick}
+            onClick={(e) => {
+              handleSettingItemClick(e, "ImageSize")
+            }}
             className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
           >
             Image Size
@@ -70,14 +105,14 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
           menuVisible
             ? "translate-x-0 opacity-100 z-10"
             : "-translate-x-[100%] opacity-0 z-[-1] pointer-events-none"
-        } transition-all delay-75 fixed rounded-md bg-dark-light-dark pt-1 shadow-sm border-dark-light border focus:outline-none`}
+        } mb-8 transition-all delay-75 fixed rounded-md bg-dark-light-dark pt-1 shadow-sm border-dark-light border focus:outline-none`}
         style={{
           top: menuPosition.top - 70,
-          right: window.innerWidth < 768 ? -180 : -260,
+          left: menuPosition.left,
         }}
         role="menu"
       >
-        <ImageSizePanel handleClose={() => setMenuVisible(false)} />
+        {renderPanel()}
       </div>
     </>
   )
