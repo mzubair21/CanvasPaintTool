@@ -59,7 +59,7 @@ function ExportPanel({ handleClose }: { handleClose: () => void }) {
               <div className="flex justify-end gap-2">
                 <h4 className="text-sm text-end ">Opacity</h4>
                 <InputProgress
-                  className="w-32"
+                  className="max-w-32"
                   range={opacity}
                   setRange={setOpacity}
                 />
@@ -131,7 +131,7 @@ function ExportPanel({ handleClose }: { handleClose: () => void }) {
             <div className="flex gap-3">
               <h4 className="text-sm text-end w-20">Opacity</h4>
               <InputProgress
-                className="w-32"
+                className="max-w-32 w-32 min-w-32"
                 range={opacity}
                 setRange={setOpacity}
               />

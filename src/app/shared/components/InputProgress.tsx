@@ -36,7 +36,7 @@ function InputProgress({
             if (range === 0) return
             decrement()
           }}
-          className="z-10 absolute top-0 left-0 h-full pl-2 flex items-center justify-center rounded-l-lg"
+          className="z-5 absolute top-0 left-0 h-full pl-2 flex items-center justify-center rounded-l-lg"
         >
           <IconArrowWhite className="rotate-180" />
         </button>
@@ -48,7 +48,7 @@ function InputProgress({
             if (range === 100) return
             increment()
           }}
-          className="absolute z-10 top-0 right-0 h-full pr-2 flex items-center justify-center rounded-l-lg"
+          className="absolute z-5 top-0 right-0 h-full pr-2 flex items-center justify-center rounded-l-lg"
         >
           <IconArrowWhite className="" />
         </button>

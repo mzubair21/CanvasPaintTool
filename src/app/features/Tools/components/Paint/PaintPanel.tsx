@@ -11,6 +11,7 @@ import brush3Img from "../../assets/brush3.png"
 import brush4Img from "../../assets/brush4.png"
 import paintAxis from "../../assets/paintAxis.png"
 import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
+import LibraryButtonPanel from "../Library/LibraryButtonPanel"
 
 function PaintPanel({ handleClose }: { handleClose: () => void }) {
   const [scale, setScale] = React.useState(0)
@@ -35,9 +36,7 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
       </div>
       <div className="border-dark-light border-b pb-2">
         <div className="flex flex-col">
-          <button className="bg-dark-light text-white rounded-lg p-2">
-            Library
-          </button>
+          <LibraryButtonPanel />
         </div>
       </div>
       <div className="p-0  overflow-hidden relative gap-2 rounded-lg bg-dark flex items-center justify-center">

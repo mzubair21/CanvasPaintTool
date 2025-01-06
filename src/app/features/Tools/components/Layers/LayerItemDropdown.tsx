@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import IconArrow from "../../../../assets/Icons/IconArrow"
 import AnimateHeight from "react-animate-height"
 import IconDropdown from "../../../../assets/Icons/IconDropdown"
 import IconLocked from "../../../../assets/Icons/IconLocked"
