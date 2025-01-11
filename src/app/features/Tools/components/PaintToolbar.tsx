@@ -24,11 +24,15 @@ const PaintToolbar = () => {
     dispatch(setTool(menu))
   }
   return (
-    <div className="flex flex-wrap flex-row gap-4 p-4 ">
+    <div className="flex flex-wrap flex-row gap-4 ">
       <ToolMenuWithDropdown
         Menu={SettingsPanel}
         title=""
-        icon={<IconBurgerMenu />}
+        icon={
+          <span className="p-1">
+            <IconBurgerMenu />
+          </span>
+        }
       />
 
       <ToolMenuWithDropdown Menu={MovePanel} title="" icon={<IconMoveMenu />} />

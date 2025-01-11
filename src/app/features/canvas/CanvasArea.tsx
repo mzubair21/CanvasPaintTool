@@ -62,7 +62,7 @@ const CanvasArea = () => {
 
   return (
     <div ref={parentRef} className="w-full h-screen bg-white">
-      <canvas ref={canvasRef} style={{ display: "block" }} />
+      <canvas ref={canvasRef} className="w-full h-full pointer-events-none" />
     </div>
   )
 }

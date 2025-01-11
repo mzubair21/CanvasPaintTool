@@ -7,30 +7,47 @@ import IconEyeOpen from "../../../../assets/Icons/IconEyeOpen"
 import IconEyeClosed from "../../../../assets/Icons/IconEyeClosed"
 import LayerItem from "./LayerItem"
 
+export interface ILayerGroup {
+  title: string
+  image: string
+  isOverlaped: boolean
+  isLocked: boolean
+  isVisible: boolean
+  active: boolean
+  items?: ILayerItem[]
+  group?: ILayerGroup[]
+}
+
+export interface ILayerItem {
+  title: string
+  image: string
+  isOverlaped: boolean
+  isLocked: boolean
+  isVisible: boolean
+  active: boolean
+}
+
+export interface ILayerItemDropdownProps {
+  title: string
+  isLocked: boolean
+  isVisible: boolean
+  items?: ILayerItem[]
+  group?: ILayerGroup[]
+  handleLayerItemClick: (event: React.MouseEvent) => void
+}
+
 function LayerItemDropdown({
   items,
+  group,
   handleLayerItemClick,
   title,
   isLocked,
   isVisible,
-}: {
-  title: string
-  isLocked: boolean
-  isVisible: boolean
-  items: {
-    image: string
-    isOverlaped: boolean
-    title: string
-    isLocked: boolean
-    isVisible: boolean
-    active: boolean
-  }[]
-  handleLayerItemClick: (event: React.MouseEvent) => void
-}) {
+}: ILayerItemDropdownProps) {
   const [active, setActive] = useState(false)
 
   return (
-    <div className="bg-dark-light rounded ">
+    <div className="pl-1 rounded-md bg-dark-light/30">
       <button
         type="button"
         className={`${active ? "active" : ""}  group w-full`}
@@ -42,7 +59,7 @@ function LayerItemDropdown({
           <div className={!active ? " -rotate-90" : ""}>
             <IconDropdown />
           </div>
-          <div className="flex w-full items-center justify-between p-2">
+          <div className="flex w-full items-center justify-between p-2 font-normal text-dark-gray">
             <span>{title}</span>
             <div className="flex gap-2">
               <button className="text-xs">
@@ -57,8 +74,8 @@ function LayerItemDropdown({
       </button>
 
       <AnimateHeight duration={300} height={active ? "auto" : 0}>
-        <ul className="sub-menu text-gray-500">
-          {items.map((layer, index) => (
+        <ul className="sub-menu text-gray-500 flex flex-col gap-2">
+          {items?.map((layer, index) => (
             <li key={index} className="group">
               <LayerItem
                 key={index}
@@ -72,6 +89,21 @@ function LayerItemDropdown({
               />
             </li>
           ))}
+          <ul className="ml-1  rounded-md bg-dark-light/40 text-gray-500 flex flex-col gap-2">
+            {group?.map((layer, index) => (
+              <li key={index} className="group">
+                <LayerItemDropdown
+                  key={index}
+                  title={layer.title}
+                  isLocked={layer.isLocked}
+                  isVisible={layer.isVisible}
+                  items={layer.items}
+                  group={layer.group}
+                  handleLayerItemClick={handleLayerItemClick}
+                />
+              </li>
+            ))}
+          </ul>
         </ul>
       </AnimateHeight>
     </div>

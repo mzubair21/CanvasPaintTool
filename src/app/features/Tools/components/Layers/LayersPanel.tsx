@@ -4,7 +4,7 @@ import IconArrow from "../../../../assets/Icons/IconArrow"
 import LayerSearch from "./LayerSearch"
 import LayerItem from "./LayerItem"
 import PerfectScrollbar from "react-perfect-scrollbar"
-import LayerItemDropdown from "./LayerItemDropdown"
+import LayerItemDropdown, { ILayerGroup, ILayerItem } from "./LayerItemDropdown"
 
 import bushImg from "../../assets/bush.png"
 import mountainImg from "../../assets/mountain.png"
@@ -17,14 +17,8 @@ const LayersPanel = ({ handleClose }: { handleClose: () => void }) => {
     isLocked: boolean
     isVisible: boolean
     active: boolean
-    items?: {
-      title: string
-      image: string
-      isOverlaped: boolean
-      isLocked: boolean
-      isVisible: boolean
-      active: boolean
-    }[]
+    items?: ILayerItem[]
+    group?: ILayerGroup[]
   }[] = [
     {
       title: "Bush",
@@ -66,6 +60,88 @@ const LayersPanel = ({ handleClose }: { handleClose: () => void }) => {
           isVisible: false,
           isOverlaped: false,
           active: false,
+        },
+      ],
+    },
+    {
+      title: "Grouped Assets 1",
+      image: bushImg,
+      isLocked: false,
+      isVisible: true,
+      isOverlaped: true,
+      active: false,
+      items: [
+        {
+          title: "Bush",
+          image: bushImg,
+          isLocked: false,
+          isVisible: true,
+          isOverlaped: true,
+          active: false,
+        },
+        {
+          title: "Tree",
+          image: mountainImg,
+          isLocked: true,
+          isVisible: false,
+          isOverlaped: false,
+          active: false,
+        },
+      ],
+      group: [
+        {
+          title: "Grouped Asset 2",
+          image: bushImg,
+          isLocked: false,
+          isVisible: true,
+          isOverlaped: true,
+          active: false,
+          items: [
+            {
+              title: "Bush",
+              image: bushImg,
+              isLocked: false,
+              isVisible: true,
+              isOverlaped: true,
+              active: false,
+            },
+            {
+              title: "Tree",
+              image: mountainImg,
+              isLocked: true,
+              isVisible: false,
+              isOverlaped: false,
+              active: false,
+            },
+          ],
+          group: [
+            {
+              title: "Grouped Asset 3",
+              image: bushImg,
+              isLocked: false,
+              isVisible: true,
+              isOverlaped: true,
+              active: false,
+              items: [
+                {
+                  title: "Bush",
+                  image: bushImg,
+                  isLocked: false,
+                  isVisible: true,
+                  isOverlaped: true,
+                  active: false,
+                },
+                {
+                  title: "Tree",
+                  image: mountainImg,
+                  isLocked: true,
+                  isVisible: false,
+                  isOverlaped: false,
+                  active: false,
+                },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -112,13 +188,14 @@ const LayersPanel = ({ handleClose }: { handleClose: () => void }) => {
           <LayerSearch />
 
           {layers.map((layer, index) =>
-            layer.items ? (
+            layer.items || layer.group ? (
               <LayerItemDropdown
                 key={index}
                 title={layer.title}
                 isLocked={layer.isLocked}
                 isVisible={layer.isVisible}
                 items={layer.items}
+                group={layer.group}
                 handleLayerItemClick={handleLayerItemClick}
               />
             ) : (
