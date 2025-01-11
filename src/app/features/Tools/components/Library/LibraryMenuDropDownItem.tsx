@@ -9,7 +9,7 @@ function LibraryMenuDropDownItem({
   image,
 }: {
   title: string
-  image: string
+  image?: string
   items?: {
     image: string
     title: string
@@ -29,20 +29,30 @@ function LibraryMenuDropDownItem({
           className="items-center flex gap-2"
           onClick={() => setActive(!active)}
         >
-          <div className={!active ? " -rotate-90" : ""}>
-            <IconDropdown />
-          </div>
-
-          <div className="w-9 aspect-square relative">
-            <img
-              src={image}
-              className="w-full h-full object-cover"
-              alt="heart"
-            />
-          </div>
+          {image ? (
+            <div className={!active ? " -rotate-90" : ""}>
+              <IconDropdown />
+            </div>
+          ) : (
+            <span className="w-5 aspect-square relative"></span>
+          )}
+          {image && (
+            <div className="w-9 aspect-square relative">
+              <img
+                src={image}
+                className="w-full h-full object-cover"
+                alt="heart"
+              />
+            </div>
+          )}
           <div className="flex w-full items-center justify-between p-2">
             <span>{title}</span>
           </div>
+          {!image && (
+            <div className={!active ? " -rotate-90" : ""}>
+              <IconDropdown />
+            </div>
+          )}
         </div>
       </button>
       {items && items.length > 0 && (

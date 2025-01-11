@@ -1,5 +1,6 @@
 import React, { useMemo } from "react"
 import IconArrow from "../../../../assets/Icons/IconArrow"
+import Button from "../../../../shared/components/Button"
 
 function ImageSizePanel({ handleClose }: { handleClose: () => void }) {
   const resolutions = useMemo(
@@ -83,9 +84,7 @@ function ImageSizePanel({ handleClose }: { handleClose: () => void }) {
               performance.
             </p>
           </div>
-          <button className="w-full  bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
-            Resize
-          </button>
+          <Button>Resize</Button>
         </div>
       </div>
     </div>

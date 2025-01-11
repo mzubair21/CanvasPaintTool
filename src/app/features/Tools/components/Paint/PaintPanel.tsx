@@ -12,6 +12,7 @@ import brush4Img from "../../assets/brush4.png"
 import paintAxis from "../../assets/paintAxis.png"
 import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 import LibraryButtonPanel from "../Library/LibraryButtonPanel"
+import LibraryNewLayerButton from "../Library/LibraryNewLayerButton"
 
 function PaintPanel({ handleClose }: { handleClose: () => void }) {
   const [scale, setScale] = React.useState(0)
@@ -83,10 +84,10 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center pr-3">
           <div className="p-2 gap-2  grid grid-cols-12">
-            <h4 className=" text-sm col-span-5">Stroke</h4>
-            <div className="col-span-7 flex gap-2">
+            <h4 className=" text-sm text-end col-span-7">Stroke</h4>
+            <div className="col-span-5 flex gap-2">
               <Switch
                 color="orange"
                 className=""
@@ -100,8 +101,8 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
             </div>
           </div>
           <div className="p-2 gap-2  grid grid-cols-12">
-            <h4 className=" text-sm col-span-5">Shadow</h4>
-            <div className="col-span-7 flex gap-2">
+            <h4 className=" text-sm text-end col-span-7">Shadow</h4>
+            <div className="col-span-5 flex gap-2">
               <Switch
                 color="orange"
                 className=""
@@ -171,9 +172,7 @@ function PaintPanel({ handleClose }: { handleClose: () => void }) {
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-4">
-        <button className="bg-dark-light text-white/60 tracking-wider rounded-lg p-2 font-light">
-          New Paint Layer
-        </button>
+        <LibraryNewLayerButton />
       </div>
     </div>
   )

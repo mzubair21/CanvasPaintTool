@@ -1,9 +1,8 @@
-import React, { useState } from "react"
-import ExportPanel from "../Settings/ExportPanel"
-import LibraryPanel from "./LibraryPanel"
+import React from "react"
 import Button from "../../../../shared/components/Button"
+import NewLayerPanel from "./NewLayerPanel"
 
-function LibraryButtonPanel() {
+function LibraryNewLayerButton() {
   const [menuVisible, setMenuVisible] = React.useState(false)
 
   const toggleMenu = () => {
@@ -12,7 +11,7 @@ function LibraryButtonPanel() {
 
   return (
     <>
-      <Button onClick={toggleMenu}>Library</Button>
+      <Button onClick={toggleMenu}>New Paint Layer</Button>
       <div
         className={`${
           menuVisible
@@ -25,10 +24,10 @@ function LibraryButtonPanel() {
         }}
         role="menu"
       >
-        <LibraryPanel handleClose={() => setMenuVisible(false)} />
+        <NewLayerPanel handleClose={() => setMenuVisible(false)} />
       </div>
     </>
   )
 }
 
-export default LibraryButtonPanel
+export default LibraryNewLayerButton

@@ -6,21 +6,10 @@ import LibraryMenuItem from "./LibraryMenuItem"
 import LibraryMenuDropDownItem from "./LibraryMenuDropDownItem"
 import LibraryCollection from "./LibraryCollection"
 
-function LibraryPanel({ handleClose }: { handleClose: () => void }) {
+function NewLayerPanel({ handleClose }: { handleClose: () => void }) {
   const collection = [
     {
       title: "Recent",
-      logo: (
-        <>
-          <span>
-            <img
-              src={heartPng}
-              alt="heart"
-              className="w-5 h-5 bg-secondary p-[1px] rounded-sm object-scale-down object-center"
-            />
-          </span>
-        </>
-      ),
       images: [
         {
           images: [
@@ -35,17 +24,6 @@ function LibraryPanel({ handleClose }: { handleClose: () => void }) {
     },
     {
       title: "Recent",
-      logo: (
-        <>
-          <span>
-            <img
-              src={heartPng}
-              alt="heart"
-              className="w-5 h-5 bg-yellow-500 p-[1px] rounded-sm object-scale-down object-center"
-            />
-          </span>
-        </>
-      ),
       images: [
         { images: [paintLibraryImg] },
         {
@@ -61,17 +39,6 @@ function LibraryPanel({ handleClose }: { handleClose: () => void }) {
     },
     {
       title: "Recent",
-      logo: (
-        <>
-          <span>
-            <img
-              src={heartPng}
-              alt="heart"
-              className="w-5 h-5 bg-teal-800 p-[1px] rounded-sm object-scale-down object-center"
-            />
-          </span>
-        </>
-      ),
       images: [
         { images: [paintLibraryImg] },
         {
@@ -102,8 +69,7 @@ function LibraryPanel({ handleClose }: { handleClose: () => void }) {
           <div className="w-52  h-80 flex flex-col">
             <LibraryMenuItem image={heartPng} title="Favorites" />
             <LibraryMenuDropDownItem
-              image={heartPng}
-              title="Recent"
+              title="Show More"
               items={[
                 { image: heartPng, title: "Layer 1" },
                 { image: heartPng, title: "Layer 2" },
@@ -122,21 +88,10 @@ function LibraryPanel({ handleClose }: { handleClose: () => void }) {
                 <LibraryCollection
                   key={index}
                   title={col.title}
-                  logo={col.logo}
                   images={col.images}
                 />
               ))}
             </div>
-          </div>
-        </div>
-        <div className=" flex gap-3 flex-col py-2  border-t pb-2 border-dark-light">
-          <div className="flex flex-col md:flex-row gap-3  md:gap-0 justify-end">
-            <button
-              onClick={(e) => {}}
-              className="bg-dark-light px-8 hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
-            >
-              Download
-            </button>
           </div>
         </div>
       </div>
@@ -144,4 +99,4 @@ function LibraryPanel({ handleClose }: { handleClose: () => void }) {
   )
 }
 
-export default LibraryPanel
+export default NewLayerPanel

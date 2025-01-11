@@ -39,13 +39,13 @@ html {
   background-color: #666;
 } */
 ::-webkit-scrollbar-track {
-  @apply bg-dark-light;
+  @apply bg-dark-gray/50 rounded-lg;
 }
 /* ::-webkit-scrollbar-track-piece {
   background-color: #000;
 } */
 ::-webkit-scrollbar-thumb {
-  @apply bg-dark border border-gray px-1;
+  @apply bg-dark p-1 rounded-lg border-2 border-white;
 }
 ::-webkit-scrollbar-corner {
   background-color: #646464;

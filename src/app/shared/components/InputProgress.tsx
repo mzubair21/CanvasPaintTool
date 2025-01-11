@@ -20,6 +20,7 @@ function InputProgress({
       onClick={(e) => {
         e.stopPropagation()
         // if (increment || decrement) return
+        return
         const rect = e.currentTarget.getBoundingClientRect()
         const clickX = e.clientX - rect.left
         const newScale =
@@ -36,7 +37,7 @@ function InputProgress({
             if (range === 0) return
             decrement()
           }}
-          className="z-5 absolute top-0 left-0 h-full pl-2 flex items-center justify-center rounded-l-lg"
+          className="z-[6] absolute top-0 left-0 h-full pl-2 flex items-center justify-center rounded-l-lg"
         >
           <IconArrowWhite className="rotate-180" />
         </button>
@@ -48,18 +49,25 @@ function InputProgress({
             if (range === 100) return
             increment()
           }}
-          className="absolute z-5 top-0 right-0 h-full pr-2 flex items-center justify-center rounded-l-lg"
+          className="z-[6] absolute top-0 right-0 h-full pr-2 flex items-center justify-center rounded-l-lg"
         >
           <IconArrowWhite className="" />
         </button>
       )}
       <div
-        className="absolute bg-dark-light h-full left-0 rounded-md"
+        className="z-5 absolute bg-dark-light h-full left-0 rounded-md"
         style={{ width: `${range}%` }}
       ></div>
-      <h4 className="text-sm text-center absolute pointer-events-none">
-        {range}
-      </h4>
+      <input
+        className="text-sm text-center absolute bg-transparent outline-none "
+        value={range}
+        onChange={(e) => {
+          const value = Math.max(0, Math.min(100, Number(e.target.value)))
+          if (!isNaN(value)) {
+            setRange(value)
+          }
+        }}
+      />
     </div>
   )
 }

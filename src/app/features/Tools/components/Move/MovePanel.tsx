@@ -5,6 +5,8 @@ import IconRestore from "../../../../assets/Icons/IconRestore"
 import IconTag from "../../../../assets/Icons/IconTag"
 import hutImg from "../../assets/hut.png"
 import InputProgress from "../../../../shared/components/InputProgress"
+import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
+import Button from "../../../../shared/components/Button"
 
 function MovePanel({ handleClose }: { handleClose: () => void }) {
   const roofs = [
@@ -59,6 +61,9 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
       name: "Hut 3",
     },
   ]
+
+  const [roofColor, setRoofColor] = React.useState("#000000")
+  const [facadeColor, setFacadeColor] = React.useState("#000000")
 
   const [selectedRoof, setSelectedRoof] = React.useState(roofs[0])
   const [selectedFacade, setSelectedFacade] = React.useState(facades[0])
@@ -184,9 +189,15 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
             >
               <IconArrow className="" />
             </button>
+
             <h4 className="text-sm text-center truncate">
               {selectedRoof.name}
             </h4>
+            <ColorPickerDropdown
+              className="!absolute top-0 mr-5 right-0"
+              color={roofColor}
+              setColor={setRoofColor}
+            />
           </div>
         </div>
         {/* Facades */}
@@ -220,6 +231,11 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
             <h4 className="text-sm text-center truncate">
               {selectedFacade.name}
             </h4>
+            <ColorPickerDropdown
+              className="!absolute top-0 mr-5 right-0"
+              color={facadeColor}
+              setColor={setFacadeColor}
+            />
           </div>
         </div>
         <div className="flex flex-col justify-center items-center gap-2 py-2">
@@ -236,9 +252,7 @@ function MovePanel({ handleClose }: { handleClose: () => void }) {
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-4">
-        <button className="bg-dark-light text-white rounded-lg p-2">
-          Flip
-        </button>
+        <Button>Flip</Button>
         {/* Scale */}
 
         <div className="grid grid-cols-2 gap-2">

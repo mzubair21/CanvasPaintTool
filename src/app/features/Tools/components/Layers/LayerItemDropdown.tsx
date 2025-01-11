@@ -89,7 +89,7 @@ function LayerItemDropdown({
               />
             </li>
           ))}
-          <ul className="ml-1  rounded-md bg-dark-light/40 text-gray-500 flex flex-col gap-2">
+          <ul className="ml-1  rounded-md bg-dark-light/10 text-gray-500 flex flex-col gap-2">
             {group?.map((layer, index) => (
               <li key={index} className="group">
                 <LayerItemDropdown

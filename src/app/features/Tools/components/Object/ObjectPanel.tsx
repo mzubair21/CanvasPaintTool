@@ -8,6 +8,8 @@ import InputProgress from "../../../../shared/components/InputProgress"
 import ObjectsSlider from "./ObjectsSlider"
 import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 import LibraryButtonPanel from "../Library/LibraryButtonPanel"
+import Button from "../../../../shared/components/Button"
+import IconArrowWhite from "../../../../assets/Icons/IconArrowWhite"
 
 function ObjectPanel({ handleClose }: { handleClose: () => void }) {
   const roofs = [
@@ -132,17 +134,17 @@ function ObjectPanel({ handleClose }: { handleClose: () => void }) {
             onClick={(e) => {
               e.preventDefault()
             }}
-            className="absolute top-[50%] rotate-180 -translate-y-[50%] left-0 z-5"
+            className="absolute top-[30%] rotate-180 -translate-y-[50%] left-0 z-5"
           >
-            <IconArrow className="swiper-object-prev" />
+            <IconArrowWhite className="swiper-object-prev" />
           </button>
           <button
             onClick={(e) => {
               e.preventDefault()
             }}
-            className="absolute top-[50%] -translate-y-[50%] z-5 right-0"
+            className="absolute top-[30%] -translate-y-[50%] z-5 right-0"
           >
-            <IconArrow className="swiper-object-next" />
+            <IconArrowWhite className="swiper-object-next" />
           </button>
           <div className="grid grid-cols-12 gap-2 pt-2">
             <h4 className=" text-sm col-span-6 text-end">Random</h4>
@@ -295,9 +297,7 @@ function ObjectPanel({ handleClose }: { handleClose: () => void }) {
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-4">
-        <button className="bg-dark-light text-white rounded-lg p-2">
-          Flip
-        </button>
+        <Button>Flip</Button>
         {/* Scale */}
 
         <div className="grid grid-cols-2 gap-2">

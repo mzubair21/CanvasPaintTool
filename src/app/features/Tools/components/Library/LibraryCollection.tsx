@@ -4,13 +4,18 @@ import IconArrowCircle from "../../../../assets/Icons/IconArrowCircle"
 function LibraryCollection({
   images,
   title,
+  logo,
 }: {
   images: { images: string[] }[]
   title: string
+  logo?: JSX.Element
 }) {
   return (
     <div>
-      <h3 className="text-secondary text-xs font-semibold my-2">{title}</h3>
+      <div className="flex items-center gap-2">
+        {logo ? logo : ""}
+        <h3 className="text-secondary text-xs font-semibold my-2">{title}</h3>
+      </div>
       <div className="flex flex-wrap gap-3">
         {images.map((image, index) => (
           <div

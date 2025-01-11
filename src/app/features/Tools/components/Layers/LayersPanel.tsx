@@ -174,7 +174,7 @@ const LayersPanel = ({ handleClose }: { handleClose: () => void }) => {
   }
 
   return (
-    <div ref={dropdownRef} className="w-64 text-white">
+    <div ref={dropdownRef} className="w-64 ">
       <div className="flex p-2 px-3 items-center border-b pb-2 border-dark-light">
         <button onClick={handleClose} className="text-xs">
           <IconArrow />

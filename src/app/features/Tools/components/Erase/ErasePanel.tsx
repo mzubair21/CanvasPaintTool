@@ -53,21 +53,21 @@ function ErasePanel({ handleClose }: { handleClose: () => void }) {
             </button>
             <button className="">
               <img
-                className="bg-secondary p-[4px] object-center object-scale-down rounded-lg"
+                className="bg-dark p-[4px] object-center object-scale-down rounded-lg"
                 src={brush2Img}
                 alt="Brush 2"
               />
             </button>
             <button className="">
               <img
-                className="bg-secondary p-[4px] object-center object-scale-down rounded-lg"
+                className="bg-dark p-[4px] object-center object-scale-down rounded-lg"
                 src={brush3Img}
                 alt="Brush 3"
               />
             </button>
             <button className="">
               <img
-                className="bg-secondary p-[4px] object-center object-scale-down rounded-lg"
+                className="bg-dark p-[4px] object-center object-scale-down rounded-lg"
                 src={brush4Img}
                 alt="Brush 4"
               />

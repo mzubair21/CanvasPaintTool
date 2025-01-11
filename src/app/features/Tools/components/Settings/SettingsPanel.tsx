@@ -4,6 +4,7 @@ import ErasePanel from "../Erase/ErasePanel"
 import ImageSizePanel from "./ImageSizePanel"
 import ExportPanel from "./ExportPanel"
 import NewScenePanel from "./NewScenePanel"
+import Button from "../../../../shared/components/Button"
 
 function SettingsPanel({ handleClose }: { handleClose: () => void }) {
   const [menuVisible, setMenuVisible] = React.useState(false)
@@ -17,12 +18,12 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
     if (menuVisible && selectedSetting == menuType) return setMenuVisible(false)
     const rect = (event.target as HTMLElement).getBoundingClientRect()
     setMenuPosition({
-      top: menuType == "Export" ? 68 : rect.top,
+      top: menuType == "Export" ? 75 : rect.top,
       left:
         menuType == "Export"
           ? window.innerWidth < 1024
             ? -15
-            : rect.left + rect.width
+            : 0
           : window.innerWidth < 768
           ? 80
           : rect.left + rect.width,
@@ -76,39 +77,29 @@ function SettingsPanel({ handleClose }: { handleClose: () => void }) {
         </div>
 
         <div className="flex flex-col gap-2 pb-4">
-          <button
+          <Button
             onClick={(e) => {
               handleSettingItemClick(e, "Save")
             }}
-            className=" bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
           >
             Save
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={(e) => {
               handleSettingItemClick(e, "Export")
             }}
-            className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
           >
             Export
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={(e) => {
               handleSettingItemClick(e, "ImageSize")
             }}
-            className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
           >
             Image Size
-          </button>
-          <button
-            disabled
-            className="disabled:pointer-events-none disabled:opacity-50 bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2"
-          >
-            Share
-          </button>
-          <button className="bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
-            Close Editor
-          </button>
+          </Button>
+          <Button disabled>Share</Button>
+          <Button>Close Editor</Button>
         </div>
       </div>
       <div

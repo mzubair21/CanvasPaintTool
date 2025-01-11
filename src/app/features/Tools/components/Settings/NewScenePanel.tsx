@@ -1,5 +1,6 @@
 import React, { useMemo } from "react"
 import IconArrow from "../../../../assets/Icons/IconArrow"
+import Button from "../../../../shared/components/Button"
 
 function NewScenePanel({ handleClose }: { handleClose: () => void }) {
   const resolutions = useMemo(
@@ -107,9 +108,7 @@ function NewScenePanel({ handleClose }: { handleClose: () => void }) {
               Grid size exceeds the 10,000 limit. Please lower it to continue.
             </p>
           </div>
-          <button className="w-full  bg-dark-light hover:bg-secondary hover:text-white text-gray rounded-lg p-2">
-            Continue
-          </button>
+          <Button> Continue</Button>
         </div>
       </div>
     </div>
