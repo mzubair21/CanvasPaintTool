@@ -2,7 +2,7 @@ import React from "react"
 import Button from "../../../../shared/components/Button"
 import NewLayerPanel from "./NewLayerPanel"
 
-function LibraryNewLayerButton() {
+function NewLayerButton() {
   const [menuVisible, setMenuVisible] = React.useState(false)
 
   const toggleMenu = () => {
@@ -30,4 +30,4 @@ function LibraryNewLayerButton() {
   )
 }
 
-export default LibraryNewLayerButton
+export default NewLayerButton

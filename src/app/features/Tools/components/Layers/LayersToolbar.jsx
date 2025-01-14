@@ -28,7 +28,9 @@ function LayersToolbar({}) {
     <div className="relative" ref={dropdownRef}>
       <button
         className={` ${
-          isFilterMenuOpen ? " border-secondary border-[1px] " : "border-none"
+          isFilterMenuOpen
+            ? " border-secondary border-[1px] "
+            : " border-[1px] border-transparent "
         }  rounded-md flex items-center justify-between border p-2 gap-3`}
         id="layers-menu-button"
         aria-expanded={isFilterMenuOpen}

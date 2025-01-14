@@ -28,7 +28,7 @@ function ExportPanel({ handleClose }) {
   const [pixel, setPixel] = useState(0)
   return (
     <>
-      <div className="w-[calc(100vw-25px)] max-w-[1240px] text-gray px-3 flex flex-col gap-2">
+      <div className="w-[calc(100vw-25px)] max-w-[99vw] text-gray px-3 flex flex-col gap-2">
         <div className="flex p-2 px-3 items-center border-b pb-2 border-dark-light">
           <button onClick={handleClose} className="text-xs">
             <IconArrow />
@@ -39,7 +39,7 @@ function ExportPanel({ handleClose }) {
         </div>
         <div className="grid grid-cols-12 border-b pb-2 border-dark-light">
           <div
-            className="col-span-12 md:col-span-4 max-h-80 pr-3 "
+            className="col-span-12 md:col-span-2 max-h-[60vh] pr-3 "
             style={{
               overflowY: "auto",
               overflowX: "hidden",
@@ -143,11 +143,11 @@ function ExportPanel({ handleClose }) {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-8">
-            <div className="h-80 flex justify-center">
+          <div className="col-span-12 md:col-span-10">
+            <div className="h-[60vh] flex justify-center">
               <img
                 src={bgImg}
-                className="object-fill max-w-[80%]  rounded-lg overflow-hidden h-full"
+                className="object-scale-down max-w-[100%] rounded-lg overflow-hidden h-full"
               />
             </div>
           </div>

@@ -16,7 +16,7 @@ function LibraryCollection({ images, title, logo }) {
           >
             {image.images.length == 1 ? (
               <img
-                className="rounded-lg"
+                className="rounded-lg object-cover w-full h-full"
                 src={image.images && image.images[0]}
                 alt="paint"
               />
@@ -53,7 +53,7 @@ const Component = ({ index, img }) => {
       )}
       <img
         key={index}
-        className={`rounded-lg absolute left-0 top-0 border border-gray/30`}
+        className={`rounded-lg absolute left-0 top-0 border border-gray/30 object-cover w-full h-full`}
         style={{
           opacity: 1 - index * 0.1,
           zIndex: 5 - index,

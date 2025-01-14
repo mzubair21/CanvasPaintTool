@@ -23,7 +23,9 @@ function ToolMenuWithDropdown({ Menu, title, icon }) {
     <div className="static" ref={dropdownRef}>
       <button
         className={` ${
-          isFilterMenuOpen ? " border-secondary border-[1px] " : "border-none"
+          isFilterMenuOpen
+            ? " border-secondary border-[1px] "
+            : " border-transparent border-[1px] "
         }  rounded-md flex items-center justify-between border p-2 gap-3`}
         id={`${ToolMenuWithDropdown}-${Math.random()}-menu-button`}
         aria-expanded={isFilterMenuOpen}

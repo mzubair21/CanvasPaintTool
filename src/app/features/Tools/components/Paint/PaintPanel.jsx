@@ -12,7 +12,7 @@ import brush4Img from "../../assets/brush4.png"
 import paintAxis from "../../assets/paintAxis.png"
 import ColorPickerDropdown from "../../../../shared/components/ColorPickerDropdown"
 import LibraryButtonPanel from "../Library/LibraryButtonPanel"
-import LibraryNewLayerButton from "../Library/LibraryNewLayerButton"
+import NewLayerButton from "../Library/NewLayerButton"
 
 function PaintPanel({ handleClose }) {
   const [scale, setScale] = React.useState(0)
@@ -172,7 +172,7 @@ function PaintPanel({ handleClose }) {
         </div>
       </div>
       <div className="flex flex-col gap-2 pb-4">
-        <LibraryNewLayerButton />
+        <NewLayerButton />
       </div>
     </div>
   )
